@@ -1,6 +1,6 @@
-# About the My #NCSULibraries Project
+# About the My #uOKtiMotion Project
 ## Purpose
-The purpose of the My #NCSULibrary app is to discover Instagram images that showcase the wonderful spaces and services provided by NCSU Libraries. We do this by encouraging our campus community, and the public at large, to add the #NCSULibrary hashtag to their photos. This allows us to centrally collect and add these photos to our University archives, with proper attribution to the original account that created the image. It also allows us to share this media through the My #NCSULibraries page.
+The purpose of the My #uOKtiMotion app is to discover Instagram images that showcase the wonderful spaces and services provided by NCSU Libraries. We do this by encouraging our campus community, and the public at large, to add the #NCSULibrary hashtag to their photos. This allows us to centrally collect and add these photos to our University archives, with proper attribution to the original account that created the image. It also allows us to share this media through the My #NCSULibraries page.
 
 ## Archiving the My #NCSULibrary Story
 Social media plays a crucial role in documenting the unique cultural history of our institution. For that reason we are working to include relevant social media items in our University archives. All approved images tagged #NCSULibray will be included in the official North Carolina State University archives. Images selected for inclusion in the archives will be harvested by NCSU Libraries so that the archival digital object will reside on permanent NCSU Libraries storage infrastructure and not on Instagram servers.
