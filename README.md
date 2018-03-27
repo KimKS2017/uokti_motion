@@ -1,4 +1,4 @@
-# About the My #uOKtiMotion Project
+# About the #uOKtiMotion Project
 ## Purpose
 We want to check the theory that the informal collaboration of people inside our developers team will increase the team performance.
 
