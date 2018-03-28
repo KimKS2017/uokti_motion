@@ -1,5 +1,5 @@
 config.json
-*.json
+data/*.json
 
 .idea
 node_modules

@@ -54,29 +54,23 @@ httpServerObservable(config.httpServer)
             timestamp: new Date().getTime(),
           }),
         )
-        .do(data => logInfo(`Получен access_token для пользовател (${data.user.username}/${data.employee_code}): ${data.access_token}`))
-        .mergeMap(
-          data =>
-            fsWriteFileObservable(`${data.employee_code}.json`, JSON.stringify(data, null, '  '), 'utf8')
-              .catch(err => {
-                console.error(err.message);
-                return Rx.Observable.of(data);
-              }),
-          srcVal => srcVal,
-        )
+        .do(data => logInfo(`Получен access_token для пользователя (${data.user.username}/${data.employee_code}): ${data.access_token}`))
         .mergeMap(
           data =>
             fsReadFileObservable(`users.json`, 'utf8')
+              .catch(err => err.code === 'ENOENT' ? Rx.Observable.of('[]') : Rx.Observable.throw(err))
               .map(contents => JSON.parse(contents))
               .map(dataFromFile => [...dataFromFile, data])
-              .mergeMap(sumData => fsWriteFileObservable(`users.json`, JSON.stringify(sumData, null, '  '), 'utf8'))
+              .mergeMap(sumData => fsWriteFileObservable(`data/users.json`, JSON.stringify(sumData, null, '  '), 'utf8'))
               .catch(
-                err =>
-                  fsWriteFileObservable(`${data.employee_code}.json`, JSON.stringify(data, null, '  '), 'utf8')
+                err => {
+                  logError(`Ошибка сохранения кода в файл users.json: ${err.message}`);
+                  return fsWriteFileObservable(`data/${data.employee_code}.json`, JSON.stringify(data, null, '  '), 'utf8')
                     .catch(err => {
-                      logError(err.message);
+                      logError(`Ошибка сохранения кода в отдельный файл: ${err.message}`);
                       return Rx.Observable.empty();
-                    }),
+                    })
+                }
               ),
           srcVal => srcVal,
           1,
