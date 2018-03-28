@@ -1,0 +1,18 @@
+{
+  "instagram": {
+    "client_id": "<client_id>",
+    "client_secret": "<client_secret>",
+    "access_token_url": "https://www.instagram.com/oauth/access_token",
+    "redirect_uri": "http://<redirect_url>"
+  },
+  "logstash": {
+    "url": "http://<logstash_url>"
+  },
+  "httpServer": {
+    "host": "0.0.0.0",
+    "port": 8080
+  },
+  "uokti": {
+    "url": "http://uokti.ru/instagram"
+  }
+}
