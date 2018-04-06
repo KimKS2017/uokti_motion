@@ -2,6 +2,7 @@ const Rx = require('rxjs/Rx');
 const urlParse = require('url-parse');
 const http = require('http');
 const fs = require('fs');
+const requestPromise = require('request-promise');
 
 module.exports.fsReadFileObservable = Rx.Observable.bindNodeCallback(fs.readFile);
 module.exports.fsWriteFileObservable = Rx.Observable.bindNodeCallback(fs.writeFile);
@@ -39,7 +40,7 @@ module.exports.httpRequestObservable = ({ server }) =>
     .map(({ req, res }) => ({ req: Object.assign(req, { query: urlParse(req.url, true).query }), res }))
     .takeUntil(Rx.Observable.fromEvent(server, 'close'));
 
-module.exports.sendToLogstash = ({ url, data }) => requestPromise.post(logstashUrl, {
+module.exports.sendToLogstash = (url) => (data) => requestPromise.post(url, {
   json: true,
   body: data,
 });

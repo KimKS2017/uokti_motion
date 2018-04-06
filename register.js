@@ -3,7 +3,7 @@ const Rx = require('rxjs/Rx');
 const requestPromise = require('request-promise');
 const config = require('./config');
 const {
-  httpServerObservable, httpRequestObservable, sendToLogstash,
+  httpServerObservable, httpRequestObservable,
   fsReadFileObservable, fsWriteFileObservable,
   logError, logInfo,
 } = require('./utils');
