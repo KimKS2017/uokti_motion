@@ -85,8 +85,9 @@ loginToInstagram({ username: config.instagram.username, password: config.instagr
   .let(getInstagramImages({ megaTag: config.instagram.megaTag }))
   // .take(1000)
   .let(addInstagramTaggedUsers)
-  .filter(edge => edge.tagged_users.length > 0)
-  .map(edge => _.extend({}, edge, { '@timestamp': moment(edge.taken_at_timestamp * 1000).format(moment.defaultFormatUtc) }))
+  .filter(edge => edge.tagged_users.length > 1)
+  .map(edge => _.extend({}, edge, { '@timestamp': moment(edge.taken_at_timestamp * 1000).utcOffset('+03:00').format(moment.defaultFormat) }))
+  // .do(console.log)
   .mergeMap(sendToLogstash(config.logstash.url))
   .subscribe({
     error: err => logError(`Общая ошибка обработки: ${err.message}`)
