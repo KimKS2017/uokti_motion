@@ -91,5 +91,5 @@ loginToInstagram({ username: config.instagram.username, password: config.instagr
   .mergeMap(sendToLogstash(config.logstash.url))
   .subscribe({
     error: err => logError(`Общая ошибка обработки: ${err.message}`),
-    complere: _ => logInfo(`Данные успешно загружены`)
+    complete: _ => logInfo(`Данные успешно загружены`)
   });
