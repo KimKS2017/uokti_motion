@@ -13,8 +13,8 @@ module.exports.fsWriteFileObservable = Rx.Observable.bindNodeCallback(fs.writeFi
 
 
 const log = (type, msg) => console.error(`[${new Date().toString()}] [${type}] ${msg}`);
-const logError = msg => log('ERROR', msg);
-const logInfo = msg => log('INFO', msg);
+const logError = module.exports.logError = msg => log('ERROR', msg);
+const logInfo = module.exports.logInfo =  msg => log('INFO', msg);
 
 module.exports.httpServerObservable = ({ host, port }) =>
   Rx.Observable.of(0)
