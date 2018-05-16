@@ -2,6 +2,7 @@ const fs = require('fs');
 const Rx = require('rxjs/Rx');
 const csv = require('csv-parse');
 const { streamToRx } = require('rxjs-stream');
+const moment = require('moment');
 const {
   getClient, scrollQuery, bulkUpdate,
 } = require('./utils');
@@ -43,6 +44,7 @@ const carma$ = scrollQuery({ rxClient })({
       _id: userid + timestamp,
       _target: {
         '@timestamp': timestamp,
+        '@timestamp_import': moment().utcOffset('+03:00').format(moment.defaultFormat),
         login: userid,
         carma: usersCurrentCarma[userid],
         displayName: registered_users[userid]
